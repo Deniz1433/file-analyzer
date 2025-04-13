@@ -1,0 +1,383 @@
+:root {
+     --primary-color: #2c3e50;
+     --accent-color: #3498db;
+     --danger-color: #e74c3c;
+     --danger-hover: #c0392b;
+     --bg-light: #f5f7fa;
+     --border-light: #dfe4ea;
+     --text-color: #333;
+     --radius: 6px;
+     --spacing: 16px;
+     --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+ * {
+     box-sizing: border-box;
+     margin: 0;
+     padding: 0;
+}
+ body {
+     font-family: var(--font-family);
+     color: var(--text-color);
+     background: #fff;
+     padding: var(--spacing);
+}
+ h1 {
+     text-align: center;
+     margin-bottom: calc(var(--spacing) * 1.5);
+     color: var(--primary-color);
+}
+ #drop-zone {
+     border: 2px dashed var(--border-light);
+     border-radius: var(--radius);
+     padding: calc(var(--spacing) * 2);
+     text-align: center;
+     color: var(--primary-color);
+     background: var(--bg-light);
+     cursor: pointer;
+     transition: background 0.2s, border-color 0.2s;
+}
+ #drop-zone:hover, #drop-zone.dragover {
+     background: #e1e8f0;
+     border-color: var(--accent-color);
+}
+ #file-count {
+     margin-top: var(--spacing);
+     font-size: 1rem;
+     font-weight: 600;
+     text-align: center;
+     margin-left: auto;
+     margin-right: auto;
+     width: fit-content;
+}
+ #file-list {
+     margin-top: var(--spacing);
+     text-align: left;
+}
+ .file-entry {
+     display: flex;
+     justify-content: flex-start;
+     align-items: center;
+     padding: 0.5rem;
+     border: 1px solid var(--border-light);
+     border-radius: var(--radius);
+     margin-bottom: 0.5rem;
+     transition: background 0.2s;
+}
+ .file-entry:hover {
+     background: var(--bg-light);
+}
+ .file-entry img {
+     width: 24px;
+     height: 24px;
+     flex-shrink: 0;
+}
+ .file-entry span {
+     margin-left: 0.5rem;
+     flex-grow: 1;
+}
+ .file-entry .remove-btn {
+     margin-right: 0.5rem;
+     color: var(--danger-color);
+     cursor: pointer;
+     font-size: 1rem;
+     flex-shrink: 0;
+}
+ .buttons {
+     display: flex;
+     gap: var(--spacing);
+     justify-content: center;
+     margin-top: var(--spacing);
+}
+ #deselect-btn, #analyze-btn {
+     padding: 0.75rem 1.5rem;
+     border: none;
+     border-radius: var(--radius);
+     font-size: 1rem;
+     cursor: pointer;
+     transition: background 0.2s;
+}
+ #deselect-btn {
+     background: var(--danger-color);
+     color: #fff;
+}
+ #deselect-btn:hover {
+     background: var(--danger-hover);
+}
+ #analyze-btn {
+     background: var(--accent-color);
+     color: #fff;
+}
+ #analyze-btn:hover {
+     background: #2980b9;
+}
+ #loading {
+     display: none;
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: rgba(255,255,255,0.85);
+     text-align: center;
+     padding-top: 200px;
+     font-size: 1.5rem;
+     color: var(--primary-color);
+     z-index: 1000;
+}
+ #results {
+     margin-top: var(--spacing);
+     font-size: 0.9rem;
+}
+ #results h2 {
+     margin-bottom: 0.5rem;
+     color: var(--primary-color);
+}
+ #results pre {
+     background: var(--bg-light);
+     padding: 0.5rem;
+     border-radius: var(--radius);
+     overflow-x: auto;
+}
+/* ---- Results styling ---- */
+ .result-entry {
+     display: flex;
+     align-items: flex-start;
+     padding: 0.75rem;
+     border: 1px solid var(--border-light);
+     border-radius: var(--radius);
+     margin-bottom: var(--spacing);
+     background: #fff;
+     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+ .result-entry img {
+     width: 32px;
+     height: 32px;
+     flex-shrink: 0;
+     margin-right: var(--spacing);
+}
+ .result-content {
+     flex: 1;
+}
+ .result-content h3 {
+     margin: 0 0 0.5rem 0;
+     font-size: 1.1rem;
+     color: var(--primary-color);
+}
+ .result-json {
+     background: var(--bg-light);
+     padding: 0.5rem;
+     border-radius: var(--radius);
+     overflow-x: auto;
+     font-family: monospace;
+     font-size: 0.9rem;
+     margin-top: 0.5rem;
+}
+/* PE Results styling */
+ .sections-table {
+     width: 100%;
+     border-collapse: collapse;
+     margin-top: var(--spacing);
+}
+ .sections-table th, .sections-table td {
+     border: 1px solid var(--border-light);
+     padding: 0.25rem 0.5rem;
+     text-align: left;
+}
+ .result-entry {
+     display: flex;
+     align-items: flex-start;
+     padding: 0.75rem;
+     border: 1px solid var(--border-light);
+     border-radius: var(--radius);
+     margin-bottom: var(--spacing);
+     background: #fff;
+     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+ .result-content h3 {
+     margin: 0 0 0.5rem;
+     font-size: 1.1rem;
+     color: var(--primary-color);
+}
+ .result-content div {
+     margin-bottom: 0.5rem;
+}
+ .result-content pre {
+     background: var(--bg-light);
+     padding: 0.5rem;
+     border-radius: var(--radius);
+     overflow-x: auto;
+     font-family: monospace;
+     font-size: 0.9rem;
+}
+ .info-table {
+     width: 100%;
+     border-collapse: collapse;
+     margin: 0.5rem 0;
+}
+ .info-table td {
+     border: 1px solid var(--border-light);
+     padding: 0.25rem 0.5rem;
+}
+ .info-key {
+     font-weight: bold;
+     width: 30%;
+}
+ .info-val {
+     width: 70%;
+}
+ .info-list {
+     list-style: disc inside;
+     margin: 0.25rem 0 0.5rem 1rem;
+}
+/* Light theme variables */
+ :root {
+     --bg-color: #ffffff;
+     --bg-light: #f5f7fa;
+     --text-color: #333333;
+     --primary-color: #2c3e50;
+     --accent-color: #3498db;
+     --danger-color: #e74c3c;
+     --border-light: #dfe4ea;
+     --radius: 6px;
+     --spacing: 16px;
+     --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/* Dark theme variables */
+ [data-theme="dark"] {
+     --bg-color: #1e1e1e;
+     --bg-light: #2c2c2c;
+     --text-color: #dddddd;
+     --primary-color: #e0e0e0;
+     --accent-color: #5dade2;
+     --danger-color: #e74c3c;
+     --border-light: #444444;
+}
+ body {
+     font-family: var(--font-family);
+     color: var(--text-color);
+     background: var(--bg-color);
+     padding: var(--spacing);
+     transition: background 0.3s, color 0.3s;
+}
+/* Theme toggle button */
+ #theme-toggle {
+     position: fixed;
+     top: var(--spacing);
+     right: var(--spacing);
+     background: none;
+     border: none;
+     font-size: 1.5rem;
+     cursor: pointer;
+     color: var(--text-color);
+     z-index: 1001;
+}
+/* Rest of your existing CSS, using variables... */
+ h1 {
+     text-align: center;
+     margin-bottom: calc(var(--spacing) * 1.5);
+     color: var(--primary-color);
+}
+ #drop-zone:hover, #drop-zone.dragover {
+     background: var(--bg-light);
+     border-color: var(--accent-color);
+}
+ #file-count {
+     margin-top: var(--spacing);
+     font-size: 1rem;
+     font-weight: 600;
+     text-align: left;
+}
+ .file-entry {
+     display: flex;
+     align-items: center;
+     padding: 0.5rem;
+     border: 1px solid var(--border-light);
+     border-radius: var(--radius);
+     margin-bottom: 0.5rem;
+     transition: background 0.2s;
+}
+/* Info tables, sections, etc. (as before) */
+/* Dark‐mode tweaks for result tables */
+ [data-theme="dark"] .result-entry {
+     background: var(--bg-light);
+    /* dark gray background */
+}
+ [data-theme="dark"] .info-table, [data-theme="dark"] .sections-table {
+     background: var(--bg-light);
+    /* dark gray */
+     border-color: var(--border-light);
+    /* slightly lighter border */
+}
+ [data-theme="dark"] .info-table th, [data-theme="dark"] .info-table td, [data-theme="dark"] .sections-table th, [data-theme="dark"] .sections-table td {
+     color: var(--text-color);
+    /* soft white text */
+}
+ [data-theme="dark"] .info-list li {
+     color: var(--text-color);
+    /* list items too */
+}
+ [data-theme="dark"] pre, [data-theme="dark"] .result-json {
+     background: var(--bg-light);
+    /* dark gray pre blocks */
+     color: var(--text-color);
+    /* soft white text */
+}
+/* Dark‑mode overlay */
+ [data-theme="dark"] #loading {
+     background: rgba(0, 0, 0, 0.85) !important;
+     color: var(--text-color) !important;
+}
+/* Collapsible lists */
+ .collapsible {
+     margin-top: var(--spacing);
+}
+ .collapsible-header {
+     display: flex;
+     align-items: center;
+     cursor: pointer;
+     user-select: none;
+     font-weight: bold;
+}
+ .collapsible .arrow {
+     display: inline-block;
+     transition: transform 0.2s ease;
+     margin-right: 0.5em;
+}
+ .collapsible.open .arrow {
+     transform: rotate(90deg);
+}
+ .collapsible-content {
+     margin-left: 1.5em;
+     margin-top: 0.25rem;
+}
+/* Dark‑mode tweaks for collapsible lists */
+ [data-theme="dark"] .collapsible-header {
+     color: var(--text-color);
+}
+ [data-theme="dark"] .info-list li {
+     color: var(--text-color);
+}
+ .collapsible-header.empty {
+     cursor: default;
+}
+ .collapsible-header.empty .arrow {
+     transform: none !important;
+}
+ /* Toast */
+.toast {
+  position: fixed;
+  top: var(--spacing);
+  left: var(--spacing);
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  z-index: 2000;
+  display: none;
+}
+
+/* Show toast */
+.toast.show {
+  display: block;
+}

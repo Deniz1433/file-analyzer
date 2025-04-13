@@ -1,0 +1,42 @@
+{
+  "name": "file-analyzer-electron",
+  "version": "1.0.0",
+  "description": "An Electron app for file analysis",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "electron": "^35.1.5",
+    "electron-builder": "^26.0.12"
+  },
+  "dependencies": {
+    "extract-file-icon": "^0.3.2"
+  },
+	"build": {
+	  "appId": "com.fileanalyzer.electron",
+	  "productName": "File Analyzer",
+	  "files": [
+		"analyze.exe",
+		"main.js",
+		"renderer.js",
+		"index.html"
+	  ],
+	  "extraMetadata": {
+		"main": "main.js"
+	  },
+	  "win": {
+		"target": [
+		  {
+			"target": "portable",
+			"arch": ["x64"]
+		  }
+		]
+	  }
+	}
+}

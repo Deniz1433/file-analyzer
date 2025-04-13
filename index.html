@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>File Analysis</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <button id="theme-toggle" aria-label="Toggle theme"></button>
+  <h1>File Analysis</h1>
+  
+  <div id="toast" class="toast"></div>
+
+  <div id="drop-zone">
+    Drag and drop files here<br>
+    <em>or click to select files</em>
+  </div>
+
+  <div id="file-count">No files chosen</div>
+  <div id="file-list"></div>
+
+  <div class="buttons">
+    <button id="deselect-btn">Deselect All</button>
+    <button id="analyze-btn">Analyze!</button>
+  </div>
+  
+  <div id="loading">Analyzing files, please wait...</div>
+  <div id="results"></div>
+  
+  <script src="renderer.js"></script>
+</body>
+</html>
