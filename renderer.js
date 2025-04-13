@@ -108,8 +108,12 @@ analyzeBtn.addEventListener('click', () => {
 
   //const py = spawn('python', ['analyze.py']);
   //const py = spawn(path.join(__dirname, 'analyze.exe'));
-  const exePath = process.env.NODE_ENV === 'development' ? path.join(__dirname, 'analyze.exe') : path.join(process.resourcesPath, 'app', 'analyze.exe');
+  const exePath = process.env.NODE_ENV === 'development'
+  ? path.join(__dirname, 'analyze.exe')
+  : path.join(path.dirname(process.execPath), 'analyze.exe');
+
   const py = spawn(exePath);
+
 
 
 

@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder"
+    "build": "electron-builder",
+    "build": "dir /b & electron-builder"
   },
   "keywords": [],
   "author": "",
@@ -18,14 +19,21 @@
   "dependencies": {
     "extract-file-icon": "^0.3.2"
   },
-	"build": {
+  "build": {
 	  "appId": "com.fileanalyzer.electron",
 	  "productName": "File Analyzer",
 	  "files": [
-		"analyze.exe",
 		"main.js",
 		"renderer.js",
-		"index.html"
+		"index.html",
+		"index.css"
+	  ],
+	  "afterPack": "scripts/cleanup-locales.js",
+	  "extraFiles": [
+		{
+		  "from": "analyze.exe",
+		  "to": "analyze.exe"
+		}
 	  ],
 	  "extraMetadata": {
 		"main": "main.js"
