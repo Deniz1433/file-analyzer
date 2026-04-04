@@ -1,3 +1,6 @@
+<img width="1920" height="1486" alt="image" src="https://github.com/user-attachments/assets/bd489b93-bef3-423c-b639-938f17730d2a" />
+
+
 # 🧠 File Analyzer (Electron + Python)
 
 A cross-platform desktop application built with **Electron** and **Python** for interactive file analysis.  
